@@ -1,4 +1,4 @@
-import { POSTS_API_URL } from "@/data/posts";
+import { getPostById } from "@/db/posts";
 import { notFound } from "next/navigation";
 
 type Props = {
@@ -7,11 +7,10 @@ type Props = {
 
 const PostDetailPage = async ({ params }: Props) => {
   const { id } = await params;
-  const response = await fetch(`${POSTS_API_URL}/${id}`);
+  const post = await getPostById(parseInt(id));
 
-  if (!response.ok) return notFound();
+  if (!post) return notFound();
 
-  const post = await response.json();
   return (
     <div className="space-y-8">
       <section className="space-y-4">

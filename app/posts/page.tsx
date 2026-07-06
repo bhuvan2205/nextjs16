@@ -1,10 +1,8 @@
-import { POSTS_API_URL } from "@/data/posts";
-import { POST } from "@/types/posts";
+import { getAllPosts } from "@/db/posts";
 import Link from "next/link";
 
 const PostsListPage = async () => {
-  const data = await fetch(POSTS_API_URL);
-  const posts = await data.json();
+  const posts = await getAllPosts();
 
   return (
     <div className="space-y-8">
@@ -14,7 +12,7 @@ const PostsListPage = async () => {
         </h1>
       </section>
       <ul className="space-y-3 text-center">
-        {posts?.slice(0, 5)?.map((post: POST) => (
+        {posts?.slice(0, 5)?.map((post) => (
           <li key={post?.id}>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <Link
