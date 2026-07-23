@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   logging: {
     browserToTerminal: true,
   },
+  experimental: {
+    cacheComponents: true
+  }
 };
 
 export default nextConfig;

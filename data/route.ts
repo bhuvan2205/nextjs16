@@ -7,4 +7,8 @@ export const NAV_LINKS = [
     href: "/posts",
     route: "Posts",
   },
+  {
+    href: "/create-post",
+    route: "Create-Post",
+  },
 ];

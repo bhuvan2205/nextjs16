@@ -1,9 +1,14 @@
 import { getAllPosts } from "@/db/posts";
 import Link from "next/link";
 
+export const generateStaticParams = async () => {
+  const posts = await getAllPosts();
+  console.log("posts in generateStaticParams", posts);
+  return posts.map((post: { id: number }) => ({ id: post.id.toString() }));
+};
+
 const PostsListPage = async () => {
   const posts = await getAllPosts();
-
   return (
     <div className="space-y-8">
       <section className="space-y-4">
